@@ -46,7 +46,7 @@ public class DownloaderService extends Service {
 
     private void download(String url) {
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get(url, new FileAsyncHttpResponseHandler() {
+        client.get(url, new FileAsyncHttpResponseHandler(this) {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, File file) {
                 Log.i(LOG_TAG, "failure");
@@ -61,6 +61,8 @@ public class DownloaderService extends Service {
             public void onProgress(long bytesWritten, long totalSize) {
                 super.onProgress(bytesWritten, totalSize);
                 int percentage = (int) (bytesWritten * 100.0 / totalSize + 0.5);
+                Log.d(LOG_TAG, "downloading");
+
 
             }
         });

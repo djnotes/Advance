@@ -3,5 +3,6 @@
 
     <string name="wait">Waiting</string>
     <string name="wait_message">Please Wait</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
