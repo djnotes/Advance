@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Advance App</string>
+
+    <string name="wait">Waiting</string>
+    <string name="wait_message">Please Wait</string>
+
+</resources>
