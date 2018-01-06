@@ -1,5 +1,7 @@
 package sematec.advance.imdb;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,17 +27,30 @@ public class IMDBModel {
 //
 //        }
 
-        Constants.webInterface.searchWord(word , Constants.OMDB_ApiKey)
-                .enqueue(new Callback<WebIMDBModel>() {
-                    @Override
-                    public void onResponse(Call<WebIMDBModel> call, Response<WebIMDBModel> response) {
-                        presenter.onSearchResult(response.body());
-                    }
+        Constants.webInterface.searchWord(word , Constants.OMDB_ApiKey).
+                subscribeOn(Schedulers.io())
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::onResponse, this::onError, this::onComplete);
+//                .enqueue(new Callback<WebIMDBModel>() {
+//                    @Override
+//                    public void onResponse(Call<WebIMDBModel> call, Response<WebIMDBModel> response) {
+//                        presenter.onSearchResult(response.body());
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<WebIMDBModel> call, Throwable t) {
+//                        presenter.onWebServiceError();
+//                    }
+//                });
+    }
 
-                    @Override
-                    public void onFailure(Call<WebIMDBModel> call, Throwable t) {
-                        presenter.onWebServiceError();
-                    }
-                });
+    private void onComplete() {
+    }
+
+    private void onError(Throwable throwable) {
+    }
+
+    private void onResponse(WebIMDBModel webIMDBModel) {
+        presenter.onSearchResult(webIMDBModel);
     }
 }

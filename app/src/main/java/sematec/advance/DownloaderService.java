@@ -33,7 +33,7 @@ public class DownloaderService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         String url = intent.getStringExtra("URL");
-        download(url);;
+        download(url);
         Toast.makeText(this, "onStartCommand", Toast.LENGTH_SHORT).show();
         return super.onStartCommand(intent, flags, startId);
     }
