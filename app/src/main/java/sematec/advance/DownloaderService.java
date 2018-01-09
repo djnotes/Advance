@@ -10,9 +10,12 @@ import android.widget.Toast;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.File;
 
 import cz.msebera.android.httpclient.Header;
+import sematec.advance.utils.DownloadEntity;
 
 /**
  * Created by johndoe on 1/5/18.
@@ -46,6 +49,8 @@ public class DownloaderService extends Service {
 
     private void download(String url) {
         AsyncHttpClient client = new AsyncHttpClient();
+        DownloadEntity dlEntity = new DownloadEntity(0);
+
         client.get(url, new FileAsyncHttpResponseHandler(this) {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, File file) {
@@ -61,6 +66,8 @@ public class DownloaderService extends Service {
             public void onProgress(long bytesWritten, long totalSize) {
                 super.onProgress(bytesWritten, totalSize);
                 int percentage = (int) (bytesWritten * 100.0 / totalSize + 0.5);
+                dlEntity.setPercent(percentage);
+                EventBus.getDefault().post(dlEntity);
                 Log.d(LOG_TAG, "downloading");
 
 

@@ -18,20 +18,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".profile.ProfileActivity_"></activity>
-        <activity android:name=".imdb.IMDBActivity_">
+        <activity android:name=".profile.ProfileActivity_">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".imdb.IMDBActivity_">
+
+        </activity>
 
         <service
             android:name=".DownloaderService"
             android:exported="false" />
 
-        <receiver android:name=".utils.BootCompleteReceiver"></receiver>
+        <receiver android:name=".utils.BootCompleteReceiver">
+            <intent-filter
+                >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -47,6 +54,7 @@
         <activity
             android:name=".map.MapsActivity"
             android:label="@string/title_activity_maps"></activity>
+        <activity android:name=".downloader.DownloaderActivity_"/>
     </application>
 
 </manifest>

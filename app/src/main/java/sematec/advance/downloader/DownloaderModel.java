@@ -18,7 +18,7 @@ public class DownloaderModel {
 
     public void download(Context context, String url) {
         Intent intent = new Intent(context, DownloaderService.class);
-        intent.putExtra("URL",  url);
+        intent.putExtra("URL", url);
         context.startService(intent);
 
     }

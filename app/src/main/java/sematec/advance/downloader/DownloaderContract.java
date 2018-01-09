@@ -10,7 +10,7 @@ public interface DownloaderContract {
     public interface  Presenter {
         void attachContext(Context mContext);
 
-        void attachView(DownloaderActivity downloaderActivity);
+        public void attachView(DownloaderActivity downloaderActivity);
         public void download(String url);
     }
 }

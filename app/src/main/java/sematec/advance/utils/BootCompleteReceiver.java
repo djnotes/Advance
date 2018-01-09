@@ -13,6 +13,7 @@ import sematec.advance.DownloaderService;
 public class BootCompleteReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
+        String str = intent.getAction();
         //We want to restart service on boot
         Intent dlIntent = new Intent(context, DownloaderService.class);
 

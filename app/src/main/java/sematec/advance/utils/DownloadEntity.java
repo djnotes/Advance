@@ -5,4 +5,20 @@ package sematec.advance.utils;
  */
 
 public class DownloadEntity {
+    int mPercent;
+
+    public DownloadEntity(int percent) {
+        mPercent = percent;
+    }
+
+    public void setPercent (int percent) {
+        mPercent = percent;
+    }
+
+    public int getPercent () { return mPercent; }
+
+
+
+
+
 }
