@@ -10,16 +10,16 @@ import android.content.Intent;
 public class DownloaderPresenter implements DownloaderContract.Presenter {
 
     DownloaderModel model = new DownloaderModel(this);
-    private Context mContext;
+    private Context mContext ;
+
 
     @Override
-    public void attachContext(Context mContext) {
-
+    public void attachContext(Context context) {
+        mContext = context;
     }
 
     @Override
     public void attachView(DownloaderActivity downloaderActivity) {
-
     }
 
     @Override
