@@ -12,6 +12,7 @@ import android.widget.Toast;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.OptionsMenuItem;
 import org.androidannotations.annotations.ViewById;
@@ -19,11 +20,12 @@ import org.androidannotations.annotations.ViewById;
 import sematec.advance.R;
 import sematec.advance.downloader.DownloaderActivity;
 import sematec.advance.downloader.DownloaderActivity_;
+import sematec.advance.map.MapsActivity;
 import sematec.advance.utils.BaseActivity;
 import sematec.advance.utils.PublicMethods;
 
 @EActivity(R.layout.activity_profile)
-@OptionsMenu(R.menu.menu)
+@OptionsMenu( {R.menu.menu} )
 public class ProfileActivity extends BaseActivity implements ProfileContract.View {
 
     ProfileContract.Presenter presenter;
@@ -34,17 +36,26 @@ public class ProfileActivity extends BaseActivity implements ProfileContract.Vie
     @ViewById
     TextView result ;
 
+    Intent mIntent ;
+
     @AfterViews
     void init() {
         presenter = new ProfilePresenter();
         presenter.attachView(this);
     }
 
-@OptionsMenuItem
-void downloader(MenuItem downloader) {
-        Intent intent = new Intent(this, DownloaderActivity_.class);
-        startActivity(intent);
+@OptionsItem(R.id.downloader)
+void method () {
+        mIntent = new Intent(this, DownloaderActivity_.class);
+        startActivity(mIntent);
 }
+
+@OptionsItem (R.id.map)
+void openMap() {
+        mIntent = new Intent (this, MapsActivity.class);
+        startActivity(mIntent);
+}
+
 
 
 

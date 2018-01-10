@@ -11,8 +11,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import sematec.advance.R;
+import sematec.advance.utils.PublicMethods;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnCameraIdleListener, GoogleMap.OnCameraMoveStartedListener {
 
     private GoogleMap mMap;
 
@@ -23,7 +24,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        mapFragment.getMapAsync( this);
     }
 
 
@@ -44,5 +45,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        setMapConfig();
+
+
     }
+
+    private void setMapConfig() {
+        mMap.setOnCameraIdleListener(this);
+        mMap.setOnCameraMoveStartedListener(this);
+    }
+
+    @Override
+    public void onCameraIdle() {
+        String lat = mMap.getCameraPosition().target.latitude + "";
+        String lng = mMap.getCameraPosition().target.longitude + "";
+        PublicMethods.showToast(MapsActivity.this, lat + " , " + lng);
+
+    }
+
+    @Override
+    public void onCameraMoveStarted(int i) {
+
+    }
+
 }
