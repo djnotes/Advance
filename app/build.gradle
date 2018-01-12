@@ -52,4 +52,6 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
     implementation project(':advancedlibrary')
+    compile 'com.orhanobut:hawk:2.0.1'
+
 }

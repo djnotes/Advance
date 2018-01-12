@@ -21,7 +21,11 @@ import sematec.advance.R;
 import sematec.advance.downloader.DownloaderActivity;
 import sematec.advance.downloader.DownloaderActivity_;
 import sematec.advance.libtest.LibraryActivity;
+import sematec.advance.libtest.LibraryActivity_;
+import sematec.advance.login.LoginActivity;
+import sematec.advance.login.LoginActivity_;
 import sematec.advance.map.MapsActivity;
+import sematec.advance.map.MapsActivity_;
 import sematec.advance.utils.BaseActivity;
 import sematec.advance.utils.PublicMethods;
 
@@ -53,12 +57,18 @@ void method () {
 
 @OptionsItem(R.id.library)
 void startLibActivity() {
-        mIntent = new Intent(this, LibraryActivity.class);
+        mIntent = new Intent(this, LibraryActivity_.class);
 }
 
 @OptionsItem (R.id.map)
 void openMap() {
-        mIntent = new Intent (this, MapsActivity.class);
+        mIntent = new Intent (this, MapsActivity_.class);
+        startActivity(mIntent);
+}
+
+@OptionsItem (R.id.login)
+void openLogin() {
+        mIntent = new Intent (this, LoginActivity_.class);
         startActivity(mIntent);
 }
 

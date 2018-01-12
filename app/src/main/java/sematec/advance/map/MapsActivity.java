@@ -10,9 +10,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.androidannotations.annotations.EActivity;
+
 import sematec.advance.R;
 import sematec.advance.utils.PublicMethods;
 
+@EActivity(R.layout.activity_maps)
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnCameraIdleListener, GoogleMap.OnCameraMoveStartedListener {
 
     private GoogleMap mMap;
