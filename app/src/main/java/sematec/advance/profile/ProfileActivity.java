@@ -20,6 +20,7 @@ import org.androidannotations.annotations.ViewById;
 import sematec.advance.R;
 import sematec.advance.downloader.DownloaderActivity;
 import sematec.advance.downloader.DownloaderActivity_;
+import sematec.advance.libtest.LibraryActivity;
 import sematec.advance.map.MapsActivity;
 import sematec.advance.utils.BaseActivity;
 import sematec.advance.utils.PublicMethods;
@@ -48,6 +49,11 @@ public class ProfileActivity extends BaseActivity implements ProfileContract.Vie
 void method () {
         mIntent = new Intent(this, DownloaderActivity_.class);
         startActivity(mIntent);
+}
+
+@OptionsItem(R.id.library)
+void startLibActivity() {
+        mIntent = new Intent(this, LibraryActivity.class);
 }
 
 @OptionsItem (R.id.map)
