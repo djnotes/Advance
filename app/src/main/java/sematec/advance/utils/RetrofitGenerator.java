@@ -22,7 +22,7 @@ public class RetrofitGenerator {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .connectTimeout(30, TimeUnit.SECONDS).build();
-        Retrofit retrofit = new Retrofit.Builder()
+        Retrofit retrofit  = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())

@@ -1,6 +1,7 @@
 package sematec.advance.login;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 /**
  * Created by johndoe on 1/12/18.
@@ -9,13 +10,15 @@ import android.content.Context;
 public interface LoginContract {
     interface Presenter {
         void attachContext(Context context);
-        void register(String username, String password, String mobile);
+        void onUserLogin(@NonNull String email, @NonNull String password);
+        void onUserRegister(@NonNull String email, @NonNull String password);
         void onRegisterSuccess();
         void onRegisterWrong();
 
         void onLoginSuccess();
         void onLoginFailed();
 
+        void attachView(LoginActivity loginActivity);
     }
     interface View {
 

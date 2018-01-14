@@ -13,21 +13,21 @@ import sematec.advance.utils.webmodels.WebIMDBModel;
  */
 
 public class IMDBModel {
-    IMDBContract.Presenter presenter ;
+    IMDBContract.Presenter presenter;
 
     public IMDBModel(IMDBContract.Presenter presenter) {
         this.presenter = presenter;
     }
 
 
-    public void getWordDetail(String word){
+    public void getWordDetail(String word) {
 //        try{
 //            WebIMDBModel model  = Constants.webInterface.searchWord(word , Constants.OMDB_ApiKey ).execute().body() ;
 //        }catch (Exception e){
 //
 //        }
 
-        Constants.webInterface.searchWord(word , Constants.OMDB_ApiKey).
+        Constants.webInterface.searchWord(word, Constants.OMDB_ApiKey).
                 subscribeOn(Schedulers.io())
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onResponse, this::onError, this::onComplete);
@@ -42,6 +42,7 @@ public class IMDBModel {
 //                        presenter.onWebServiceError();
 //                    }
 //                });
+//        Constants.webInterface.createUser()
     }
 
     private void onComplete() {

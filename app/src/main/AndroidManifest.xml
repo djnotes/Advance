@@ -19,11 +19,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".profile.ProfileActivity_">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".imdb.IMDBActivity_" />
 
@@ -53,7 +48,12 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".downloader.DownloaderActivity_" />
         <activity android:name=".libtest.LibraryActivity_" />
-        <activity android:name=".login.LoginActivity_"></activity>
+        <activity android:name=".login.LoginActivity_">
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
 
     </application>
 
