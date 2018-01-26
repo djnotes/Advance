@@ -17,6 +17,7 @@ import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.OptionsMenuItem;
 import org.androidannotations.annotations.ViewById;
 
+import sematec.advance.QrCodeScanner.QrCodeActivity;
 import sematec.advance.R;
 import sematec.advance.downloader.DownloaderActivity;
 import sematec.advance.downloader.DownloaderActivity_;
@@ -26,6 +27,7 @@ import sematec.advance.login.LoginActivity;
 import sematec.advance.login.LoginActivity_;
 import sematec.advance.map.MapsActivity;
 import sematec.advance.map.MapsActivity_;
+import sematec.advance.transition.OriginActivity;
 import sematec.advance.utils.BaseActivity;
 import sematec.advance.utils.PublicMethods;
 
@@ -71,6 +73,17 @@ void openLogin() {
         mIntent = new Intent (this, LoginActivity_.class);
         startActivity(mIntent);
 }
+@OptionsItem (R.id.transition)
+void openTransition() {
+        mIntent = new Intent (this, OriginActivity.class);
+        startActivity(mIntent);
+}
+@OptionsItem (R.id.qr)
+void openQr() {
+        mIntent = new Intent (this, QrCodeActivity.class);
+        startActivity(mIntent);
+}
+
 
 
 
